@@ -1,0 +1,38 @@
+<%@ page import="com.oceanview.model.User" %>
+<%
+    String ctx = request.getContextPath();
+    User loggedUser = (User) session.getAttribute("user");
+    boolean loggedIn = (loggedUser != null);
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ocean View Resort - Reservation System</title>
+    <link rel="stylesheet" href="<%= ctx %>/assets/style.css">
+</head>
+<body>
+<div class="app">
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <div class="logo"></div>
+                <div class="brand-title">Ocean View Resort</div>
+            </div>
+
+            <% if (loggedIn) { %>
+            <nav class="nav">
+                <a class="<%= request.getRequestURI().endsWith("/dashboard") ? "active":"" %>" href="<%= ctx %>/dashboard">Dashboard</a>
+                <a class="<%= request.getRequestURI().endsWith("/add-reservation") ? "active":"" %>" href="<%= ctx %>/add-reservation">Add</a>
+                <a class="<%= request.getRequestURI().endsWith("/view-reservations") ? "active":"" %>" href="<%= ctx %>/view-reservations">View</a>
+                <a class="<%= request.getRequestURI().endsWith("/search-reservation") ? "active":"" %>" href="<%= ctx %>/search-reservation">Search</a>
+                <a class="<%= request.getRequestURI().endsWith("/report") ? "active":"" %>" href="<%= ctx %>/report">Report</a>
+                <a class="btn btn-ghost" href="<%= ctx %>/logout">Logout</a>
+            </nav>
+            <% } %>
+        </div>
+    </header>
+
+    <main class="container">

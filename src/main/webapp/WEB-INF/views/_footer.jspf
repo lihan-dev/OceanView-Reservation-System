@@ -1,0 +1,9 @@
+</main>
+
+<div class="footer">
+    &copy; <%= java.time.Year.now() %> Ocean View Resort
+</div>
+
+</div>
+</body>
+</html>
